@@ -6,3 +6,4 @@ func _ready():
 
 func _on_body_entered(body):
 	print("Collision")
+	self.queue_free()
