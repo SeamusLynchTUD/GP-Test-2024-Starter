@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpx8p7jyhdni3"]
+
+[ext_resource type="Texture2D" uid="uid://rb8smo0f45mc" path="res://icon.svg" id="1_fy0tp"]
+[ext_resource type="Script" path="res://BlockScript.gd" id="1_y8o66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e163j"]
+size = Vector2(127.5, 127.5)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(484, 460)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_y8o66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.25, -1.25)
+shape = SubResource("RectangleShape2D_e163j")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_fy0tp")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+amount = 281
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 10)
+spread = 180.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
